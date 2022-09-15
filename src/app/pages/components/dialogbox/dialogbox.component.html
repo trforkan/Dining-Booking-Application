@@ -1,0 +1,70 @@
+<div class="dialog-box" fxLayout="row">
+  <img class="dialog-image" src="assets/booking.jpg" alt="">
+
+  <div class="booking-form">
+    <div class="dining-space">
+      <div class="dining-space__title">Select your dining space</div>
+      <div class="toggle-buttons">
+        <mat-button-toggle-group class="toggle-button-group" vertical="false">
+            <mat-button-toggle class="toggle-button" [value]="2">
+              <div class="toggle-button__box" fxLayout="row">
+                <img src="assets/fork-logo.png" alt="">
+                <span>02</span>
+              </div>
+            </mat-button-toggle>
+            <mat-button-toggle class="toggle-button" [value]="4">
+                <span>04</span>
+            </mat-button-toggle>
+            <mat-button-toggle class="toggle-button" [value]="10">
+              <span>Custom</span>
+            </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="booking-information">
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Custom Dining Space</mat-label>
+        <input type="text" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Occasion</mat-label>
+        <input type="text" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Occasion Date</mat-label>
+        <input type="text" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Occasion Time</mat-label>
+        <input type="text" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Enter Name</mat-label>
+        <input type="text" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Phone Number</mat-label>
+        <input type="text" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Email Id</mat-label>
+        <input type="text" matInput>
+      </mat-form-field>
+
+    </div>
+
+    <div class="submit-button" fxLayoutAlign="end">
+      <button mat-raised-button>BOOK NOW</button>
+    </div>
+
+  </div>
+</div>

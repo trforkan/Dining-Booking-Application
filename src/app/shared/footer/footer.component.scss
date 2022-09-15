@@ -1,0 +1,18 @@
+.navbar-bottom {
+  height: 100%;
+  background-color: black;
+  &__title {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 3px;
+  }
+  .dev-info {
+    margin-top: 10px;
+    color: white;
+    .profile-link {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}

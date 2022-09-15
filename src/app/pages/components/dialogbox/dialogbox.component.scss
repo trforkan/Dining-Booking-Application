@@ -1,0 +1,79 @@
+.dialog-box {
+  height: 100%;
+  overflow-y: hidden;
+  // background-color: aqua;
+  .dialog-image {
+    height: 100%;
+    width: 33%;
+    object-fit: cover;
+
+  }
+
+  .booking-form {
+    width: 100%;
+    margin-top: 25px;
+
+    .dining-space {
+      width: 90%;
+      // border: 1px solid red;
+      padding-bottom: 25px;
+      &__title {
+        margin: 25px;
+      }
+      .toggle-buttons {
+        .toggle-button-group{
+          border: none;
+          .toggle-button{
+            width: 200px;
+            height: 100px;
+            border: none;
+            margin-left: 25px;
+            background-color: #505050;
+            border-radius: 5px;
+            color: white;
+            display: flex;
+            justify-content: center;
+
+            &__box {
+              height: 80%;
+              width: 100%;
+              border: 1px solid white;
+              img {
+                width: 80px;
+              }
+            }
+          }
+          // .toggle-button-checked {
+          .mat-button-toggle-checked{
+            background-color: #DA4F44;
+          }
+        }
+      }
+    }
+
+    .booking-information {
+      border: 1px solid red;
+      // margin-top: 25px;
+      // margin-left: 25px;
+      margin: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      .form-field {
+        margin-right: 1%;
+        margin-left: 1%;
+        width: 23%;
+      }
+    }
+
+    .submit-button {
+
+      button {
+        margin-right: 25px;
+        background-color: #DA4F44;
+        color: white;
+      }
+    }
+
+  }
+
+}

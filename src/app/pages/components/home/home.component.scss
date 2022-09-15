@@ -1,0 +1,23 @@
+.container {
+  // border: 1px solid red;
+  width: 100%;
+  .booking-info {
+    width: 90%;
+    // border: 1px solid yellowgreen;
+    .button-container {
+      width: 100%;
+      // border: 1px solid red;
+      .add-bookings-button {
+        margin: 15px;
+        color: white;
+        background-color: black;
+      }
+    }
+    .table-bookings {
+      width: 100%;
+      .booking-table {
+        width: 100%;
+      }
+    }
+  }
+}
