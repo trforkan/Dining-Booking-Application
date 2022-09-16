@@ -37,20 +37,26 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class HomeComponent implements OnInit , AfterViewInit{
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSources = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  displayedColumns: string[] = ['Name', 'Email', 'Phone_Number', 'Booking_Date','Booking_Time', 'Dining_Space','Occasion','Action'];
+  dataSources: any; //= new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   dataSourcesLocal?: BookTable[] = [];
+  datasourcesForkan: any
 
   @ViewChild(MatPaginator) paginator: any | MatPaginator;
 
   ngAfterViewInit() {
-    setTimeout(() => {this.dataSources.paginator = this.paginator},5000);
+    if(this.paginator){
+      // this.dataSourcesLocal.paginator = this.paginator;
+    }
+    // setTimeout(() => {this.dataSources.paginator = this.paginator},5000);
     // this.dataSources.paginator = this.paginator;
   }
 
   constructor( private dialog: MatDialog , private api: RestApiService) {
     this.dataSourcesLocal = this.api.getBookings();
-    console.log(this.dataSourcesLocal)
+    this.dataSources = new MatTableDataSource<BookTable>(this.dataSourcesLocal);
+    // console.log(this.datasourcesForkan);
+    console.log(this.dataSources);
   }
 
   ngOnInit(): void {
