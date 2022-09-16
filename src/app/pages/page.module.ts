@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './../Material/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule, Routes } from '@angular/router';
@@ -17,6 +18,8 @@ import { DialogboxComponent } from './components/dialogbox/dialogbox.component';
     CommonModule,
     FlexLayoutModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent }
     ])

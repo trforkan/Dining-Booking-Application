@@ -1,6 +1,7 @@
 import { BookTable } from './../../../Model/models';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { group } from '@angular/animations';
 
 @Component({
   selector: 'app-dialogbox',
@@ -13,20 +14,22 @@ export class DialogboxComponent implements OnInit {
     Name: [''],
     Email: [''],
     Phone_Number: [''],
-    Booking_Date: [],
-    Booking_Time: [],
-    Dining_Space: [],
-    Occasion: []
+    Booking_Date: [''],
+    Booking_Time: [''],
+    Dining_Space: [''],
+    Occasion: ['']
   });
 
   constructor(private fb: FormBuilder) { }
 
-  // bookingInformation: BookTable = this.bookingInfoForm.fb.group({
-  //   Name=[''],
-
-  // })
+  bookingInformation?: BookTable;
 
   ngOnInit(): void {
+  }
+
+  display() {
+    this.bookingInformation = this.bookingInfoForm.value;
+    console.log(this.bookingInformation);
   }
 
 }

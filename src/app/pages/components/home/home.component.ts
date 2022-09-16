@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
   // }
   openDialogbox(): void {
     const dialogRef = this.dialog.open(DialogboxComponent, {
-      width: '70%', height: '60%',
+      width: '70%', height: '65%',
       panelClass: 'custom-dialog-container'
     });
 

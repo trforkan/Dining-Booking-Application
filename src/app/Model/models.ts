@@ -5,7 +5,7 @@ export interface BookTable {
   Email: string,
   Phone_Number: number,
   Booking_Date: Date,
-  Booking_Time: Time,
+  Booking_Time: string,
   Dining_Space: number,
   Occasion: string
 };

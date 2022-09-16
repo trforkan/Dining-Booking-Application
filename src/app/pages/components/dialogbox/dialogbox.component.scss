@@ -36,8 +36,8 @@
 
             &__box {
               height: 80%;
-              width: 100%;
-              border: 1px solid white;
+              width: 150px;
+              // border: 1px solid white;
               img {
                 width: 80px;
               }
@@ -52,12 +52,12 @@
     }
 
     .booking-information {
-      border: 1px solid red;
+      // border: 1px solid red;
       // margin-top: 25px;
       // margin-left: 25px;
       margin: 15px;
-      display: flex;
-      flex-wrap: wrap;
+      // display: flex;
+      // flex-wrap: wrap;
       .form-field {
         margin-right: 1%;
         margin-left: 1%;
