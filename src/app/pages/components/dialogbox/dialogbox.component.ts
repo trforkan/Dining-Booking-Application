@@ -1,3 +1,4 @@
+import { RestApiService } from './../../../Rest-Api/rest-api.service';
 import { BookTable } from './../../../Model/models';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -20,7 +21,7 @@ export class DialogboxComponent implements OnInit {
     Occasion: ['']
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, public Api: RestApiService) { }
 
   bookingInformation?: BookTable;
 
@@ -30,6 +31,8 @@ export class DialogboxComponent implements OnInit {
   display() {
     this.bookingInformation = this.bookingInfoForm.value;
     console.log(this.bookingInformation);
+    this.Api.post(<BookTable>this.bookingInformation);
+
   }
 
 }

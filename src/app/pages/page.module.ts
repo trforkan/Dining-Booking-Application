@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './../Material/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -20,6 +21,7 @@ import { DialogboxComponent } from './components/dialogbox/dialogbox.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent }
     ])
