@@ -10,14 +10,14 @@ export class RestApiService {
   allBookings?: BookTable[]=[];
 
   constructor(private http: HttpClient) {
-    this.get();
+    // this.get();
    }
 
   post(bookingInformation: BookTable){
     localStorage.setItem(JSON.stringify(bookingInformation.Phone_Number), JSON.stringify(bookingInformation));
   }
 
-  get(){
+  getBookings(){
 
     for(let i=0; i<localStorage.length;i++){
       let key = localStorage.key(i);
@@ -29,6 +29,7 @@ export class RestApiService {
       this.allBookings?.push(objectValue);
     }
     console.log(this.allBookings);
+    return this.allBookings;
   }
 
 }

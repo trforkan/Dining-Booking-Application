@@ -1,6 +1,10 @@
+import { RestApiService } from './../../../Rest-Api/rest-api.service';
+import { BookTable } from './../../../Model/models';
 import { DialogboxComponent } from './../dialogbox/dialogbox.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface PeriodicElement {
   name: string;
@@ -20,6 +24,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+
 ];
 
 @Component({
@@ -27,14 +35,26 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit , AfterViewInit{
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSources = ELEMENT_DATA;
+  dataSources = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dataSourcesLocal?: BookTable[] = [];
 
-  constructor( private dialog: MatDialog) { }
+  @ViewChild(MatPaginator) paginator: any | MatPaginator;
+
+  ngAfterViewInit() {
+    setTimeout(() => {this.dataSources.paginator = this.paginator},5000);
+    // this.dataSources.paginator = this.paginator;
+  }
+
+  constructor( private dialog: MatDialog , private api: RestApiService) {
+    this.dataSourcesLocal = this.api.getBookings();
+    console.log(this.dataSourcesLocal)
+  }
 
   ngOnInit(): void {
+
   }
 
   // openDialogbox() {

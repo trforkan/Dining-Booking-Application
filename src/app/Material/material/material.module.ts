@@ -14,6 +14,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 const Material = [
   MatFormFieldModule,
@@ -30,7 +31,8 @@ const Material = [
   MatDatepickerModule,
   MatNativeDateModule,
   MatDialogModule,
-  MatDividerModule
+  MatDividerModule,
+  MatPaginatorModule
 ];
 
 

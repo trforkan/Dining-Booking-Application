@@ -2,7 +2,8 @@ import { RestApiService } from './../../../Rest-Api/rest-api.service';
 import { BookTable } from './../../../Model/models';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { group } from '@angular/animations';
+
+
 
 @Component({
   selector: 'app-dialogbox',
@@ -10,6 +11,10 @@ import { group } from '@angular/animations';
   styleUrls: ['./dialogbox.component.scss']
 })
 export class DialogboxComponent implements OnInit {
+
+  public minDate: Date = new Date('8/3/2017 9:00 AM');
+  public maxDate: Date = new Date('8/3/2017 11:30 AM');
+  public dateValue: Date = new Date('8/3/2017 10:00 AM');
 
   bookingInfoForm: FormGroup = this.fb.group({
     Name: [''],
@@ -21,7 +26,8 @@ export class DialogboxComponent implements OnInit {
     Occasion: ['']
   });
 
-  constructor(private fb: FormBuilder, public Api: RestApiService) { }
+  constructor(private fb: FormBuilder, public Api: RestApiService) {
+  }
 
   bookingInformation?: BookTable;
 
@@ -34,5 +40,8 @@ export class DialogboxComponent implements OnInit {
     this.Api.post(<BookTable>this.bookingInformation);
 
   }
+
+
+
 
 }
