@@ -56,7 +56,7 @@
           <td mat-cell *matCellDef="let element" >
             <div >
               <mat-icon (click)="updateBooking(element.Phone_Number)" >edit</mat-icon>
-              <mat-icon>visibility</mat-icon>
+              <mat-icon (click)="viewBookingInfo(element.Phone_Number)">visibility</mat-icon>
               <mat-icon (click)="deleteBooking(element.Phone_Number)">delete</mat-icon>
             </div>
           </td>

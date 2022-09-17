@@ -24,61 +24,68 @@
         </mat-button-toggle-group>
       </div>
     </div>
-    <mat-divider></mat-divider>
 
-    <div [formGroup]="bookingInfoForm" class="booking-information" fxLayout="row wrap"  >
 
-      <mat-form-field class="form-field" appearance="outline" fxFlex="23">
-        <mat-label>Custom Dining Space</mat-label>
-        <input formControlName="Dining_Space" [value]="group.value" type="text" matInput>
-      </mat-form-field>
+    <div [formGroup]="bookingInfoForm" class="booking-information"  >
 
-      <mat-form-field class="form-field" appearance="outline" fxFlex="23">
-        <mat-label>Occasion</mat-label>
-        <input formControlName="Occasion" type="text" matInput>
-      </mat-form-field>
+      <mat-divider></mat-divider>
 
-      <mat-form-field class="form-field" appearance="outline" fxFlex="23">
-        <mat-label>Occasion Date</mat-label>
-        <input formControlName="Booking_Date" matInput [matDatepicker]="picker">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-        <!-- <input type="text" matInput> -->
-      </mat-form-field>
+      <div fxLayout="row wrap" style="margin-top: 30px;" >
+        <mat-form-field class="form-field" appearance="outline"  fxFlex="23">
+          <mat-label>Custom Dining Space</mat-label>
+          <input [readonly]="viewInformation" formControlName="Dining_Space" [value]="group.value" type="text" matInput>
+        </mat-form-field>
 
-      <mat-form-field class="form-field" appearance="outline" fxFlex="23">
-        <mat-label>Occasion Time</mat-label>
-        <!-- <input formControlName="Booking_Time" type="text"  matInput> -->
-        <mat-select formControlName="Booking_Time">
-          <mat-option *ngFor="let time of bookingTimes" [value]="time" >
-            <option [value]="time">{{time}}</option>
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field class="form-field" appearance="outline" fxFlex="23">
+          <mat-label>Occasion</mat-label>
+          <input [readonly]="viewInformation" formControlName="Occasion" type="text" matInput>
+        </mat-form-field>
 
-      <!-- <mat-divider></mat-divider> -->
-      <h2>________________________________________________________________________</h2>
+        <mat-form-field class="form-field" appearance="outline" fxFlex="23">
+          <mat-label>Occasion Date</mat-label>
+          <input [readonly]="viewInformation" formControlName="Booking_Date" matInput [matDatepicker]="picker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <!-- <input type="text" matInput> -->
+        </mat-form-field>
 
-      <mat-form-field class="form-field" appearance="outline" fxFlex="19">
-        <mat-label>Enter Name</mat-label>
-        <input formControlName="Name" type="text" matInput>
-      </mat-form-field>
+        <mat-form-field  class="form-field" appearance="outline" fxFlex="23">
+          <mat-label>Occasion Time</mat-label>
+          <!-- <input formControlName="Booking_Time" type="text"  matInput> -->
+          <mat-select  formControlName="Booking_Time">
+            <mat-option  *ngFor="let time of bookingTimes" [value]="time" >
+              <option  [value]="time">{{time}}</option>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
 
-      <mat-form-field class="form-field" appearance="outline" fxFlex="19">
-        <mat-label>Phone Number</mat-label>
-        <input formControlName="Phone_Number" type="text" matInput>
-      </mat-form-field>
+      <mat-divider></mat-divider>
+      <!-- <h2>________________________________________________________________________</h2> -->
 
-      <mat-form-field class="form-field" appearance="outline" fxFlex="31">
-        <mat-label>Email Id</mat-label>
-        <input formControlName="Email" type="text" matInput>
-      </mat-form-field>
+      <div fxLayout="row wrap" style="margin-top: 30px;" >
+        <mat-form-field class="form-field" appearance="outline" fxFlex="19">
+          <mat-label>Enter Name</mat-label>
+          <input [readonly]="viewInformation" formControlName="Name" type="text" matInput>
+        </mat-form-field>
 
+        <mat-form-field class="form-field" appearance="outline" fxFlex="19">
+          <mat-label>Phone Number</mat-label>
+          <input [readonly]="viewInformation" formControlName="Phone_Number" type="text" matInput>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="outline" fxFlex="31">
+          <mat-label>Email Id</mat-label>
+          <input [readonly]="viewInformation" formControlName="Email" type="text" matInput>
+        </mat-form-field>
+
+      </div>
     </div>
 
     <div class="submit-button" fxLayoutAlign="end">
-      <button (click)="display()" mat-raised-button>BOOK NOW</button>
+      <button mat-dialog-close mat-raised-button >CLOSE</button>
+      <button (click)="addBooking()" mat-raised-button [disabled]="viewInformation">{{dialogType}}</button>
     </div>
 
   </div>

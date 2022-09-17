@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     'Occasion',
     'Action',
   ];
+
   dataSources: any;
   dataSourcesLocal?: BookTable[] = [];
 
@@ -39,54 +40,72 @@ export class HomeComponent implements OnInit, AfterViewInit {
   constructor(private dialog: MatDialog, private api: RestApiService, private snackbar: MatSnackBar) {
     this.dataSourcesLocal = this.api.getBookings();
     this.dataSources = new MatTableDataSource<BookTable>(this.dataSourcesLocal);
-    // console.log(this.datasourcesForkan);
     console.log(this.dataSources);
   }
 
   ngOnInit(): void { }
+
+
+  reloadData() {
+    this.dataSourcesLocal?.splice(0);
+    this.dataSourcesLocal = this.api.getBookings();
+    this.dataSources = new MatTableDataSource<BookTable>(this.dataSourcesLocal);
+    console.log(this.dataSources);
+  }
 
   openDialogbox(): void {
     const dialogRef = this.dialog.open(DialogboxComponent, {
       width: '70%',
       height: '65%',
       panelClass: 'custom-dialog-container',
+      data: {
+        bookType: "BOOK NOW"
+      },
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
+      this.reloadData();
     });
   }
 
 
-  openDialogboxEditor(bookedInformation: BookTable): void {
+  openDialogboxEditor(bookedInformation: number, view: boolean): void {
     const dialogRef = this.dialog.open(DialogboxEditorComponent, {
       width: '70%',
       height: '65%',
       panelClass: 'custom-dialog-container',
       data: {
-        bookedInformation
+        bookedInformation,
+        bookType: "UPDATE NOW",
+        view: view
       },
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
+      this.reloadData()
     });
   }
 
   deleteBooking(keyValue: number) {
-    // console.log(keyValue.toString());
     this.api.deleteBooking(keyValue.toString());
+
     this.snackbar.open(`Booking Number: ${keyValue} deleted successfully`);
     setTimeout(()=>{
       this.snackbar.dismiss();
     },1500);
+    this.reloadData();
   }
 
   updateBooking(keyValue: number) {
-    
-    let stringObj = (localStorage?.getItem(keyValue.toString()));
-    let object = JSON.parse(stringObj as string);
-    this.openDialogboxEditor(object)
-    // console.log(JSON.parse(object as string))
+    this.openDialogboxEditor(keyValue as number, false);
   }
+
+  viewBookingInfo(keyValue: number) {
+    this.openDialogboxEditor(keyValue as number, true);
+  }
+
 }

@@ -38,5 +38,11 @@ export class RestApiService {
     localStorage.removeItem(keyValue as string);
   }
 
+  getBooking(keyValue: string) {
+    // console.log(localStorage.getItem(keyValue))
+    // console.log( JSON.parse(localStorage.getItem(keyValue) as string))
+    return JSON.parse(localStorage.getItem(keyValue) as string)
+  }
+
 
 }
