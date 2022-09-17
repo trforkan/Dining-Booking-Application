@@ -1,6 +1,7 @@
 import { BookTable } from './../Model/models';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ConnectableObservable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class RestApiService {
    }
 
   post(bookingInformation: BookTable){
-    localStorage.setItem(JSON.stringify(bookingInformation.Phone_Number), JSON.stringify(bookingInformation));
+    localStorage.setItem((bookingInformation.Phone_Number).toString(), JSON.stringify(bookingInformation));
   }
 
   getBookings(){
@@ -31,5 +32,11 @@ export class RestApiService {
     console.log(this.allBookings);
     return this.allBookings;
   }
+
+  deleteBooking(keyValue: string) {
+    console.log(localStorage.getItem(keyValue))
+    localStorage.removeItem(keyValue as string);
+  }
+
 
 }

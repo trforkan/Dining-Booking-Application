@@ -15,6 +15,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar'
+
 
 const Material = [
   MatFormFieldModule,
@@ -32,7 +34,8 @@ const Material = [
   MatNativeDateModule,
   MatDialogModule,
   MatDividerModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatSnackBarModule
 ];
 
 

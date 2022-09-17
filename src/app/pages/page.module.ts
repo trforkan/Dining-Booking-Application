@@ -7,13 +7,15 @@ import { HomeComponent } from './components/home/home.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DialogboxComponent } from './components/dialogbox/dialogbox.component';
+import { DialogboxEditorComponent } from './components/dialogbox-editor/dialogbox-editor.component';
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    DialogboxComponent
+    DialogboxComponent,
+    DialogboxEditorComponent
   ],
   imports: [
     CommonModule,
