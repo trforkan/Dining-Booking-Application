@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DialogboxComponent } from './components/dialogbox/dialogbox.component';
 import { DialogboxEditorComponent } from './components/dialogbox-editor/dialogbox-editor.component';
+import { BookingDetailsComponent } from './components/booking-details/booking-details.component';
 
 
 
@@ -15,7 +16,8 @@ import { DialogboxEditorComponent } from './components/dialogbox-editor/dialogbo
   declarations: [
     HomeComponent,
     DialogboxComponent,
-    DialogboxEditorComponent
+    DialogboxEditorComponent,
+    BookingDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { DialogboxEditorComponent } from './components/dialogbox-editor/dialogbo
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forChild([
-      { path: '', component: HomeComponent }
+      { path: '', component: HomeComponent },
+      { path: 'booking/:id', component: DialogboxComponent},
     ])
   ]
 })

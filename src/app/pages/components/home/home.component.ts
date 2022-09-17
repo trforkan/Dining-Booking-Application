@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -37,7 +38,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.dataSources.paginator = this.paginator;
   }
 
-  constructor(private dialog: MatDialog, private api: RestApiService, private snackbar: MatSnackBar) {
+  constructor(private router: Router, private dialog: MatDialog, private api: RestApiService, private snackbar: MatSnackBar) {
     this.dataSourcesLocal = this.api.getBookings();
     this.dataSources = new MatTableDataSource<BookTable>(this.dataSourcesLocal);
     console.log(this.dataSources);
@@ -105,7 +106,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   viewBookingInfo(keyValue: number) {
-    this.openDialogboxEditor(keyValue as number, true);
+    // this.openDialogboxEditor(keyValue as number, true);
+    this.router.navigateByUrl(`/booking/+${keyValue}`);
+
   }
 
 }

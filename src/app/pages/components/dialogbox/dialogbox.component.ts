@@ -13,9 +13,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DialogboxComponent implements OnInit {
 
-  // @Input() editorViewBookedInfo?: BookTable
-
-
   dialogType = "UPDATE"
 
   bookingTimes = [
@@ -81,11 +78,14 @@ export class DialogboxComponent implements OnInit {
   }
 
   closeDialog() {
-    this.dialogRef.close();
+
+    console.log("closed")
     setTimeout(()=>{
       this.snackbar.dismiss,
       this.closeDialog();
     },1500);
+
+    this.dialogRef.close();
   }
 
   addBooking() {
@@ -94,15 +94,24 @@ export class DialogboxComponent implements OnInit {
     this.Api.post(<BookTable>this.bookingInformation);
 
     this.snackbar.open("Booking list updated Successfully");
-
-    setTimeout(()=>{
-      this.snackbar.dismiss,
-      this.closeDialog();
-    },1000);
+    setTimeout(()=> {
+      this.snackbar.dismiss();
+    },1500)
 
   }
 
-
+  display(event: any) {
+    console.log(event);
+    this.bookingInfoForm = this.fb.group({
+      Name: [this.bookedInformation?.Name],
+      Email: [this.bookedInformation?.Email],
+      Phone_Number: [this.bookedInformation?.Phone_Number],
+      Booking_Date: [this.bookedInformation?.Booking_Date],
+      Booking_Time: [this.bookedInformation?.Booking_Time],
+      Dining_Space: [event],
+      Occasion: [this.bookedInformation?.Dining_Space]
+    });
+  }
 
 
 }

@@ -41,9 +41,15 @@
               img {
                 width: 80px;
               }
+              .value {
+                margin-top: 5px;
+                height: 80px;
+                display: flex;
+                flex-direction: column;
+                // border: 1px solid red;
+              }
             }
           }
-          // .toggle-button-checked {
           .mat-button-toggle-checked{
             background-color: #DA4F44;
           }
@@ -52,12 +58,8 @@
     }
 
     .booking-information {
-      // border: 1px solid red;
-      // margin-top: 25px;
-      // margin-left: 25px;
+
       margin: 30px;
-      // display: flex;
-      // flex-wrap: wrap;
       .form-field {
         margin-right: 1%;
         margin-left: 1%;

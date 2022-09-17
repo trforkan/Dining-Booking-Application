@@ -5,17 +5,23 @@
     <div class="dining-space">
       <div class="dining-space__title">Select your dining space</div>
       <div class="toggle-buttons">
-        <mat-button-toggle-group #group="matButtonToggleGroup" class="toggle-button-group" vertical="false">
+        <mat-button-toggle-group #group="matButtonToggleGroup" [value]="" (change)="display(group.value)"  class="toggle-button-group" vertical="false">
             <mat-button-toggle class="toggle-button" [value]="2">
               <div class="toggle-button__box" fxLayout="row" fxLayoutAlign="space-between center">
                 <img src="assets/fork-logo.png" alt="">
-                <span>02</span>
+                <div class="value">
+                    <h1>02</h1>
+                    <h3>Person</h3>
+                </div>
               </div>
             </mat-button-toggle>
             <mat-button-toggle class="toggle-button" [value]="4">
               <div class="toggle-button__box" fxLayout="row" fxLayoutAlign="space-between center">
                 <img src="assets/fork-logo.png" alt="">
-                <span>04</span>
+                <div class="value">
+                  <h1>04</h1>
+                  <h3>Person</h3>
+              </div>
               </div>
             </mat-button-toggle>
             <mat-button-toggle class="toggle-button" [value]="0">
