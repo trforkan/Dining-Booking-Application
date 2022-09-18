@@ -16,6 +16,7 @@ export class DialogboxEditorComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public bookedData: any , private bookingService: BookingService) { }
 
   ngOnInit(): void {
+    console.log(this.bookedData);
     this.bookingInfo = this.bookingService.getBooking(this.bookedData.bookedInformation)
     console.log(this.bookingInfo),
     this.edit=this.bookedData.edit;

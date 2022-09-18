@@ -13,7 +13,7 @@ export class BookingService {
 
   post(bookingInformation: BookTable){
 
-    console.log(bookingInformation);
+    // console.log(bookingInformation);
 
     this.allBookings?.splice(0);
 
@@ -36,7 +36,7 @@ export class BookingService {
   getBookings(){
 
     for(let i=0; i<JSON?.parse(localStorage['Bookings']).length;i++){
-      console.log(JSON?.parse(localStorage['Bookings'])[i]);
+      // console.log(JSON?.parse(localStorage['Bookings'])[i]);
       this.allBookings?.push(JSON?.parse(localStorage['Bookings'])[i]);
     }
     console.log(this.allBookings)
@@ -61,19 +61,22 @@ export class BookingService {
 
     for(let i=0; i<JSON?.parse(localStorage['Bookings']).length;i++){
       let object = JSON?.parse(localStorage['Bookings'])[i];
-      if(object.Phone_Number == keyValue)return object;
+      console.log(object);
+      if(object.PhoneNumber == keyValue)return object;
     }
+
+    return null;
     // return JSON.parse(localStorage.getItem(keyValue) as string)
   }
 
   update(updatedObject: BookTable) {
 
-    console.log("editor")
+    // console.log("editor")
     this.allBookings.splice(0);
 
     for(let i=0; i<JSON?.parse(localStorage['Bookings']).length;i++){
       let object = JSON?.parse(localStorage['Bookings'])[i];
-      if(object.Phone_Number == updatedObject.Phone_Number){
+      if(object.PhoneNumber == updatedObject.PhoneNumber){
         this.allBookings.push(updatedObject);
       }
       else {

@@ -50,10 +50,10 @@ export class DialogboxComponent implements OnInit {
   bookingInfoForm: FormGroup = this.fb.group({
     Name: [this.bookedInformation?.Name],
     Email: [this.bookedInformation?.Email],
-    Phone_Number: [this.bookedInformation?.Phone_Number],
-    Booking_Date: [this.bookedInformation?.Booking_Date],
-    Booking_Time: [this.bookedInformation?.Booking_Time],
-    Dining_Space: [this.bookedInformation?.Dining_Space],
+    PhoneNumber: [this.bookedInformation?.PhoneNumber],
+    BookingDate: [this.bookedInformation?.BookingDate],
+    BookingTime: [this.bookedInformation?.BookingTime],
+    DiningSpace: [this.bookedInformation?.DiningSpace],
     Occasion: [this.bookedInformation?.Occasion]
   });
 
@@ -71,10 +71,10 @@ export class DialogboxComponent implements OnInit {
     this.bookingInfoForm = this.fb.group({
       Name: [this.bookedInformation?.Name],
       Email: [this.bookedInformation?.Email],
-      Phone_Number: [this.bookedInformation?.Phone_Number],
-      Booking_Date: [this.bookedInformation?.Booking_Date],
-      Booking_Time: [this.bookedInformation?.Booking_Time],
-      Dining_Space: [this.bookedInformation?.Dining_Space],
+      PhoneNumber: [this.bookedInformation?.PhoneNumber],
+      BookingDate: [this.bookedInformation?.BookingDate],
+      BookingTime: [this.bookedInformation?.BookingTime],
+      DiningSpace: [this.bookedInformation?.DiningSpace],
       Occasion: [this.bookedInformation?.Occasion]
     });
     console.log(this.bookingInfoForm);
@@ -116,11 +116,11 @@ export class DialogboxComponent implements OnInit {
     this.bookingInfoForm = this.fb.group({
       Name: [this.bookedInformation?.Name],
       Email: [this.bookedInformation?.Email],
-      Phone_Number: [this.bookedInformation?.Phone_Number],
-      Booking_Date: [this.bookedInformation?.Booking_Date],
-      Booking_Time: [this.bookedInformation?.Booking_Time],
-      Dining_Space: [event],
-      Occasion: [this.bookedInformation?.Dining_Space]
+      PhoneNumber: [this.bookedInformation?.PhoneNumber],
+      BookingDate: [this.bookedInformation?.BookingDate],
+      BookingTime: [this.bookedInformation?.BookingTime],
+      DiningSpace: [event],
+      Occasion: [this.bookedInformation?.DiningSpace]
     });
   }
 

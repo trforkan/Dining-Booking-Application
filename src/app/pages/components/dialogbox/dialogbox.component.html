@@ -39,7 +39,7 @@
       <div fxLayout="row wrap" style="margin-top: 30px;" >
         <mat-form-field class="form-field" appearance="outline"  fxFlex="23">
           <mat-label>Custom Dining Space</mat-label>
-          <input formControlName="Dining_Space" [value]="group.value" type="text" matInput>
+          <input formControlName="DiningSpace" [value]="group.value" type="text" matInput>
         </mat-form-field>
 
         <mat-form-field class="form-field" appearance="outline" fxFlex="23">
@@ -49,7 +49,7 @@
 
         <mat-form-field class="form-field" appearance="outline" fxFlex="23">
           <mat-label>Occasion Date</mat-label>
-          <input  formControlName="Booking_Date" matInput [matDatepicker]="picker">
+          <input  formControlName="BookingDate" matInput [matDatepicker]="picker">
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
@@ -59,7 +59,7 @@
         <mat-form-field  class="form-field" appearance="outline" fxFlex="23">
           <mat-label>Occasion Time</mat-label>
           <!-- <input formControlName="Booking_Time" type="text"  matInput> -->
-          <mat-select formControlName="Booking_Time">
+          <mat-select formControlName="BookingTime">
             <mat-option  *ngFor="let time of bookingTimes" [value]="time" >
               <option [value]="time">{{time}}</option>
             </mat-option>
@@ -78,7 +78,7 @@
 
         <mat-form-field class="form-field" appearance="outline" fxFlex="19">
           <mat-label>Phone Number</mat-label>
-          <input formControlName="Phone_Number" type="text" matInput>
+          <input formControlName="PhoneNumber" type="text" matInput>
         </mat-form-field>
 
         <mat-form-field class="form-field" appearance="outline" fxFlex="31">
