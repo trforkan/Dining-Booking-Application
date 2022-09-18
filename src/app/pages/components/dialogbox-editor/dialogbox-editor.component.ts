@@ -1,5 +1,5 @@
-import { RestApiService } from './../../../Rest-Api/rest-api.service';
-import { BookTable } from './../../../Model/models';
+import { BookingService } from '../../../BookingService/BookingService';
+import { BookTable } from '../../../Model/booking.models';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -13,14 +13,13 @@ export class DialogboxEditorComponent implements OnInit {
   bookingInfo?: BookTable;
   view: boolean = false;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public bookedData: any , private api: RestApiService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public bookedData: any , private bookingService: BookingService) { }
 
   ngOnInit(): void {
-    this.bookingInfo = this.api.getBooking(this.bookedData.bookedInformation.toString())
+    this.bookingInfo = this.bookingService.getBooking(this.bookedData.bookedInformation)
     console.log(this.bookingInfo),
     this.view=this.bookedData.view;
     console.log(this.view);
-    // console.log(this.bookedData.bookedInformation)
   }
 
 }

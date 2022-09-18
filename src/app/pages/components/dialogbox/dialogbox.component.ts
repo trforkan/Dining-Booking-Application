@@ -1,6 +1,6 @@
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { RestApiService } from './../../../Rest-Api/rest-api.service';
-import { BookTable } from './../../../Model/models';
+import { BookingService } from '../../../BookingService/BookingService';
+import { BookTable } from '../../../Model/booking.models';
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, EmailValidator } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -57,12 +57,15 @@ export class DialogboxComponent implements OnInit {
     Occasion: [this.bookedInformation?.Occasion]
   });
 
-  constructor(@Inject(MAT_DIALOG_DATA) public bookedData: any, private snackbar: MatSnackBar, private fb: FormBuilder, public Api: RestApiService, public dialogRef: MatDialogRef<DialogboxComponent>) {
+  constructor(@Inject(MAT_DIALOG_DATA) public bookedData: any, private snackbar: MatSnackBar, private fb: FormBuilder, public bookingService: BookingService, public dialogRef: MatDialogRef<DialogboxComponent>) {
   }
 
   bookingInformation?: BookTable;
 
   ngOnInit(): void {
+
+    console.log(this.bookingInformation)
+
     this.dialogType = this.bookedData.bookType;
 
     this.bookingInfoForm = this.fb.group({
@@ -91,7 +94,8 @@ export class DialogboxComponent implements OnInit {
   addBooking() {
     this.bookingInformation = this.bookingInfoForm.value;
     console.log(this.bookingInformation);
-    this.Api.post(<BookTable>this.bookingInformation);
+
+    this.bookingService.post(<BookTable>this.bookingInformation);
 
     this.snackbar.open("Booking list updated Successfully");
     setTimeout(()=> {

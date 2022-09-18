@@ -1,6 +1,6 @@
 import { DialogboxEditorComponent } from './../dialogbox-editor/dialogbox-editor.component';
-import { RestApiService } from './../../../Rest-Api/rest-api.service';
-import { BookTable } from './../../../Model/models';
+import { BookingService } from '../../../BookingService/BookingService';
+import { BookTable } from '../../../Model/booking.models';
 import { DialogboxComponent } from './../dialogbox/dialogbox.component';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -38,19 +38,21 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.dataSources.paginator = this.paginator;
   }
 
-  constructor(private router: Router, private dialog: MatDialog, private api: RestApiService, private snackbar: MatSnackBar) {
+  constructor(private router: Router, private dialog: MatDialog, private bookingService: BookingService, private snackbar: MatSnackBar) {
     // this.dataSourcesLocal = this.api.getBookings();
     this.dataSources = new MatTableDataSource<BookTable>(this.dataSourcesLocal);
     console.log(this.dataSources);
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.reloadData();
+  }
 
 
   reloadData() {
-    // this.dataSourcesLocal?.splice(0);
-    // this.dataSourcesLocal = this.api.getBookings();
-    // this.dataSources = new MatTableDataSource<BookTable>(this.dataSourcesLocal);
+    this.dataSourcesLocal?.splice(0);
+    this.dataSourcesLocal = this.bookingService.getBookings();
+    this.dataSources = new MatTableDataSource<BookTable>(this.dataSourcesLocal);
     // console.log(this.dataSources);
   }
 
@@ -60,6 +62,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       height: '65%',
       panelClass: 'custom-dialog-container',
       data: {
+        // bookedInformation,
         bookType: "BOOK NOW"
       },
       disableClose: true
@@ -67,12 +70,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
+      // this.dataSources?.splice(0);
       this.reloadData();
     });
   }
 
 
   openDialogboxEditor(bookedInformation: number, view: boolean): void {
+    
     const dialogRef = this.dialog.open(DialogboxEditorComponent, {
       width: '70%',
       height: '65%',
@@ -87,17 +92,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
+      this.dataSources?.splice(0);
       this.reloadData()
     });
   }
 
   deleteBooking(keyValue: number) {
-    this.api.deleteBooking(keyValue.toString());
+    this.bookingService.deleteBooking(keyValue.toString());
 
     this.snackbar.open(`Booking Number: ${keyValue} deleted successfully`);
     setTimeout(()=>{
       this.snackbar.dismiss();
     },1500);
+    // this.dataSources?.splice(0);
     this.reloadData();
   }
 

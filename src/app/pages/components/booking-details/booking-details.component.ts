@@ -1,5 +1,5 @@
-import { RestApiService } from './../../../Rest-Api/rest-api.service';
-import { BookTable } from './../../../Model/models';
+import { BookingService } from '../../../BookingService/BookingService';
+import { BookTable } from '../../../Model/booking.models';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -12,21 +12,19 @@ export class BookingDetailsComponent implements OnInit {
 
   bookedDetails?: BookTable;
 
-  constructor(private route: ActivatedRoute ,private api: RestApiService) { }
+  constructor(private route: ActivatedRoute ,private bookingService: BookingService) { }
 
   ngOnInit(): void {
 
     this.route.params.subscribe(({id})=>{
       setTimeout(()=>{
         this.loadInformation(id);
-      },1000);
+      },500);
     });
   }
 
-  loadInformation(id: string){
-    this.bookedDetails = this.api.getBooking(id);
-    console.log(this.bookedDetails);
-    console.log(this.bookedDetails?.Name);
+  loadInformation(id: number){
+    this.bookedDetails = this.bookingService.getBooking(id);
   }
 
 }
