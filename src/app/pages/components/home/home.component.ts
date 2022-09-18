@@ -45,6 +45,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+
+    console.log(Math.floor(Math.random() * 100000));
+
     this.reloadData();
   }
 
@@ -97,8 +100,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
   }
 
+ 
+
   deleteBooking(keyValue: number) {
-    this.bookingService.deleteBooking(keyValue.toString());
+
+
+
+
+    this.bookingService.deleteBooking(keyValue);
 
     this.snackbar.open(`Booking Number: ${keyValue} deleted successfully`);
     setTimeout(()=>{

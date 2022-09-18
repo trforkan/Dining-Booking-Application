@@ -57,7 +57,7 @@
             <div >
               <mat-icon (click)="updateBooking(element.PhoneNumber)" >edit</mat-icon>
               <a class="hypeLink" [routerLink]="'booking/'+element.PhoneNumber"><mat-icon (click)="viewBookingInfo(element.PhoneNumber)">visibility</mat-icon></a>
-              <mat-icon (click)="deleteBooking(element.Phone_Number)">delete</mat-icon>
+              <mat-icon (click)="deleteBooking(element.PhoneNumber)">delete</mat-icon>
             </div>
           </td>
         </ng-container>

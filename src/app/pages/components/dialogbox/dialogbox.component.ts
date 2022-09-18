@@ -15,6 +15,9 @@ export class DialogboxComponent implements OnInit {
 
   dialogType = "UPDATE"
 
+  idValue?: number;
+
+
   bookingTimes = [
     "9:00 AM",
     "9:30 AM",
@@ -48,6 +51,7 @@ export class DialogboxComponent implements OnInit {
   @Input() viewInformation = false;
 
   bookingInfoForm: FormGroup = this.fb.group({
+    Id: [this.idValue],
     Name: [this.bookedInformation?.Name],
     Email: [this.bookedInformation?.Email],
     PhoneNumber: [this.bookedInformation?.PhoneNumber],
@@ -58,6 +62,7 @@ export class DialogboxComponent implements OnInit {
   });
 
   constructor(@Inject(MAT_DIALOG_DATA) public bookedData: any, private snackbar: MatSnackBar, private fb: FormBuilder, public bookingService: BookingService, public dialogRef: MatDialogRef<DialogboxComponent>) {
+    this.idValue = Math.floor(Math.random() * 100000);
   }
 
   bookingInformation?: BookTable;
@@ -69,6 +74,7 @@ export class DialogboxComponent implements OnInit {
     this.dialogType = this.bookedData.bookType;
 
     this.bookingInfoForm = this.fb.group({
+      Id: [this.idValue],
       Name: [this.bookedInformation?.Name],
       Email: [this.bookedInformation?.Email],
       PhoneNumber: [this.bookedInformation?.PhoneNumber],
@@ -114,6 +120,7 @@ export class DialogboxComponent implements OnInit {
   display(event: any) {
     console.log(event);
     this.bookingInfoForm = this.fb.group({
+      Id: [this.idValue],
       Name: [this.bookedInformation?.Name],
       Email: [this.bookedInformation?.Email],
       PhoneNumber: [this.bookedInformation?.PhoneNumber],

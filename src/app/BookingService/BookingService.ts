@@ -43,13 +43,14 @@ export class BookingService {
     return this.allBookings;
   }
 
-  deleteBooking(keyValue: string) {
+
+  deleteBooking(keyValue: number) {
 
     this.allBookings.splice(0);
 
     for(let i=0; i<JSON?.parse(localStorage['Bookings']).length;i++){
       let object = JSON?.parse(localStorage['Bookings'])[i];
-      if(object.Phone_Number.toString() != keyValue)this.allBookings.push(object);
+      if(object.PhoneNumber != keyValue)this.allBookings.push(object);
     }
     localStorage.clear();
     localStorage.setItem("Bookings", JSON?.stringify(this.allBookings));
