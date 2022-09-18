@@ -28,7 +28,7 @@ import { BookingDetailsComponent } from './components/booking-details/booking-de
     HttpClientModule,
     RouterModule.forChild([
       { path: '', component: HomeComponent },
-      { path: 'booking/:id', component: DialogboxComponent},
+      { path: 'booking/:id', component: BookingDetailsComponent},
     ])
   ]
 })

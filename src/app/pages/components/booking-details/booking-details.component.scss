@@ -1,0 +1,16 @@
+.details-box {
+  height: 100%;
+  background-color: white;
+
+  &__image {
+    margin-left: -150px;
+    height: 100%;
+    // width: 53.2%;
+  }
+
+  .booking-form {
+    padding: 70px;
+    width: 30%;
+    // border: 1px solid red;
+  }
+}

@@ -1,1 +1,38 @@
-<p>booking-details works!</p>
+<div class="details-box" fxLayout="row">
+  <img class="details-box__image" src="assets/booking.jpg" alt="">
+
+  <div class="booking-form" fxLayout="column" >
+    <div>
+      <div class="options">
+        <h2>Name: {{bookedDetails?.Name}}</h2>
+      </div>
+      <div class="options">
+        <h2>Email: {{bookedDetails?.Email}}</h2>
+      </div>
+    </div>
+
+    <div>
+      <div class="options">
+        <h2>Contact No: {{bookedDetails?.Phone_Number}}</h2>
+      </div>
+      <div class="options">
+        <h2>Date: {{bookedDetails?.Booking_Date | date}}</h2>
+      </div>
+    </div>
+
+  </div>
+  <div  class="booking-form" fxLayout="column">
+    <div>
+      <div class="options">
+        <h2>Time: {{bookedDetails?.Booking_Time}}</h2>
+      </div>
+      <div class="options">
+        <h2>Dining Space: {{bookedDetails?.Dining_Space}} person</h2>
+      </div>
+    </div>
+    <div class="options">
+      <h2>Occation: {{bookedDetails?.Occasion}}</h2>
+    </div>
+  </div>
+
+</div>

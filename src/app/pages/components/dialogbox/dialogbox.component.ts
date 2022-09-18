@@ -54,7 +54,7 @@ export class DialogboxComponent implements OnInit {
     Booking_Date: [this.bookedInformation?.Booking_Date],
     Booking_Time: [this.bookedInformation?.Booking_Time],
     Dining_Space: [this.bookedInformation?.Dining_Space],
-    Occasion: [this.bookedInformation?.Dining_Space]
+    Occasion: [this.bookedInformation?.Occasion]
   });
 
   constructor(@Inject(MAT_DIALOG_DATA) public bookedData: any, private snackbar: MatSnackBar, private fb: FormBuilder, public Api: RestApiService, public dialogRef: MatDialogRef<DialogboxComponent>) {
@@ -72,7 +72,7 @@ export class DialogboxComponent implements OnInit {
       Booking_Date: [this.bookedInformation?.Booking_Date],
       Booking_Time: [this.bookedInformation?.Booking_Time],
       Dining_Space: [this.bookedInformation?.Dining_Space],
-      Occasion: [this.bookedInformation?.Dining_Space]
+      Occasion: [this.bookedInformation?.Occasion]
     });
     console.log(this.bookingInfoForm);
   }
