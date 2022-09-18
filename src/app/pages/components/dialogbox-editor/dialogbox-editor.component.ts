@@ -11,15 +11,15 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DialogboxEditorComponent implements OnInit {
 
   bookingInfo?: BookTable;
-  view: boolean = false;
+  edit: boolean = true;
 
   constructor(@Inject(MAT_DIALOG_DATA) public bookedData: any , private bookingService: BookingService) { }
 
   ngOnInit(): void {
     this.bookingInfo = this.bookingService.getBooking(this.bookedData.bookedInformation)
     console.log(this.bookingInfo),
-    this.view=this.bookedData.view;
-    console.log(this.view);
+    this.edit=this.bookedData.edit;
+    console.log(this.edit);
   }
 
 }

@@ -76,8 +76,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
 
-  openDialogboxEditor(bookedInformation: number, view: boolean): void {
-    
+  openDialogboxEditor(bookedInformation: number, edit: boolean): void {
+
     const dialogRef = this.dialog.open(DialogboxEditorComponent, {
       width: '70%',
       height: '65%',
@@ -85,14 +85,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
       data: {
         bookedInformation,
         bookType: "UPDATE NOW",
-        view: view
+        edit: edit
       },
       disableClose: true
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-      this.dataSources?.splice(0);
+      // this.dataSources?.splice(0);
       this.reloadData()
     });
   }
@@ -109,7 +109,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   updateBooking(keyValue: number) {
-    this.openDialogboxEditor(keyValue as number, false);
+    this.openDialogboxEditor(keyValue as number, true);
+    this.reloadData();
   }
 
   viewBookingInfo(keyValue: number) {

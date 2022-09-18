@@ -66,5 +66,26 @@ export class BookingService {
     // return JSON.parse(localStorage.getItem(keyValue) as string)
   }
 
+  update(updatedObject: BookTable) {
+
+    console.log("editor")
+    this.allBookings.splice(0);
+
+    for(let i=0; i<JSON?.parse(localStorage['Bookings']).length;i++){
+      let object = JSON?.parse(localStorage['Bookings'])[i];
+      if(object.Phone_Number == updatedObject.Phone_Number){
+        this.allBookings.push(updatedObject);
+      }
+      else {
+        this.allBookings.push(object);
+      }
+    }
+
+    localStorage.clear();
+    localStorage.setItem("Bookings", JSON?.stringify(this.allBookings));
+
+
+  }
+
 
 }

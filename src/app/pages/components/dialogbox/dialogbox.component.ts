@@ -95,7 +95,14 @@ export class DialogboxComponent implements OnInit {
     this.bookingInformation = this.bookingInfoForm.value;
     console.log(this.bookingInformation);
 
-    this.bookingService.post(<BookTable>this.bookingInformation);
+    if(this.viewInformation == false){
+      console.log("post");
+      this.bookingService.post(<BookTable>this.bookingInformation);
+    }
+    else {
+      console.log("update");
+      this.bookingService.update(<BookTable>this.bookingInformation);
+    }
 
     this.snackbar.open("Booking list updated Successfully");
     setTimeout(()=> {
