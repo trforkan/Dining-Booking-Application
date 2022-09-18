@@ -107,7 +107,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   viewBookingInfo(keyValue: number) {
     // this.openDialogboxEditor(keyValue as number, true);
-    this.router.navigateByUrl(`/booking/+${keyValue}`);
+    this.router.navigateByUrl(`/booking/${keyValue}`);
 
   }
 

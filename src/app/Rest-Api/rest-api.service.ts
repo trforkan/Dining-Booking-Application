@@ -10,9 +10,7 @@ export class RestApiService {
 
   allBookings?: BookTable[]=[];
 
-  constructor(private http: HttpClient) {
-    // this.get();
-   }
+  constructor(private http: HttpClient) {}
 
   post(bookingInformation: BookTable){
     localStorage.setItem((bookingInformation.Phone_Number).toString(), JSON.stringify(bookingInformation));

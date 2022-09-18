@@ -10,21 +10,23 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BookingDetailsComponent implements OnInit {
 
-  keyValue?: number;
-
   bookedDetails?: BookTable;
 
   constructor(private route: ActivatedRoute ,private api: RestApiService) { }
 
   ngOnInit(): void {
+
     this.route.params.subscribe(({id})=>{
-      // console.log(id);
-      this.keyValue=id;
-      // console.log(this.keyValue)
-      this.bookedDetails = this.api.getBooking(id);
-      console.log(this.bookedDetails);
-      console.log(this.bookedDetails?.Name)
-    })
+      setTimeout(()=>{
+        this.loadInformation(id);
+      },1000);
+    });
+  }
+
+  loadInformation(id: string){
+    this.bookedDetails = this.api.getBooking(id);
+    console.log(this.bookedDetails);
+    console.log(this.bookedDetails?.Name);
   }
 
 }
