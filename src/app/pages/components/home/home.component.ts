@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   constructor(private router: Router, private dialog: MatDialog, private api: RestApiService, private snackbar: MatSnackBar) {
-    this.dataSourcesLocal = this.api.getBookings();
+    // this.dataSourcesLocal = this.api.getBookings();
     this.dataSources = new MatTableDataSource<BookTable>(this.dataSourcesLocal);
     console.log(this.dataSources);
   }
@@ -48,10 +48,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
   reloadData() {
-    this.dataSourcesLocal?.splice(0);
-    this.dataSourcesLocal = this.api.getBookings();
-    this.dataSources = new MatTableDataSource<BookTable>(this.dataSourcesLocal);
-    console.log(this.dataSources);
+    // this.dataSourcesLocal?.splice(0);
+    // this.dataSourcesLocal = this.api.getBookings();
+    // this.dataSources = new MatTableDataSource<BookTable>(this.dataSourcesLocal);
+    // console.log(this.dataSources);
   }
 
   openDialogbox(): void {

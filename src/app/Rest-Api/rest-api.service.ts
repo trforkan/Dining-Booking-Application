@@ -8,12 +8,24 @@ import { ConnectableObservable } from 'rxjs';
 })
 export class RestApiService {
 
-  allBookings?: BookTable[]=[];
+  allBookings?: BookTable;
 
   constructor(private http: HttpClient) {}
 
   post(bookingInformation: BookTable){
-    localStorage.setItem((bookingInformation.Phone_Number).toString(), JSON.stringify(bookingInformation));
+
+    // this.allBookings?.splice(0),
+    this.allBookings = bookingInformation;//JSON.parse(localStorage?.getItem('Bookings'));
+
+    // this.allBookings?.push(bookingInformation);
+    localStorage.setItem("Bookings", JSON.stringify(this.allBookings));
+    // localStorage.setItem((bookingInformation.Phone_Number).toString(), JSON.stringify(bookingInformation));
+
+    console.log(this.allBookings);
+    // for(let i=0;i<this.allBookings; i++){
+      // console.log(this.allBookings[i]);
+    // }
+
   }
 
   getBookings(){
@@ -25,7 +37,7 @@ export class RestApiService {
 
       console.log(objectValue);
 
-      this.allBookings?.push(objectValue);
+      // this.allBookings?.push(objectValue);
     }
     console.log(this.allBookings);
     return this.allBookings;
