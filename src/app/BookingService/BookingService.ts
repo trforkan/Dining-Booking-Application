@@ -44,26 +44,26 @@ export class BookingService {
   }
 
 
-  deleteBooking(keyValue: number) {
+  deleteBooking(keyValue: string) {
 
     this.allBookings.splice(0);
 
     for(let i=0; i<JSON?.parse(localStorage['Bookings']).length;i++){
       let object = JSON?.parse(localStorage['Bookings'])[i];
-      if(object.PhoneNumber != keyValue)this.allBookings.push(object);
+      if(object.Id != keyValue)this.allBookings.push(object);
     }
     localStorage.clear();
     localStorage.setItem("Bookings", JSON?.stringify(this.allBookings));
   }
 
-  getBooking(keyValue: number) {
+  getBooking(keyValue: string) {
 
     // this.allBookings.splice(0);
 
     for(let i=0; i<JSON?.parse(localStorage['Bookings']).length;i++){
       let object = JSON?.parse(localStorage['Bookings'])[i];
       console.log(object);
-      if(object.PhoneNumber == keyValue)return object;
+      if(object.Id == keyValue)return object;
     }
 
     return null;

@@ -2,12 +2,13 @@ import { DialogboxEditorComponent } from './../dialogbox-editor/dialogbox-editor
 import { BookingService } from '../../../BookingService/BookingService';
 import { BookTable } from '../../../Model/booking.models';
 import { DialogboxComponent } from './../dialogbox/dialogbox.component';
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { debounce, debounceTime, fromEvent, map } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -26,16 +27,34 @@ export class HomeComponent implements OnInit, AfterViewInit {
     'Action',
   ];
 
+  filterRefValue?: string = '';
+
   dataSources: any;
+  filteredDataSources: BookTable[] = [];
   dataSourcesLocal?: BookTable[] = [];
 
   @ViewChild(MatPaginator) paginator: any | MatPaginator;
+  @ViewChild('searchText') searchValue?: ElementRef;
 
   ngAfterViewInit() {
     setTimeout(() => {
       this.dataSources.paginator = this.paginator;
     }, 2000);
     this.dataSources.paginator = this.paginator;
+
+    const searchContent = fromEvent<any>(this.searchValue?.nativeElement, 'keyup').pipe(
+      debounceTime(500),
+      map(res=> res.target.value),
+    );
+
+    searchContent.subscribe(response=>{
+      console.log(response);
+      this.filterRefValue=response;
+
+      this.reloadData();
+
+    })
+
   }
 
   constructor(private router: Router, private dialog: MatDialog, private bookingService: BookingService, private snackbar: MatSnackBar) {
@@ -47,6 +66,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
 
     console.log(Math.floor(Math.random() * 100000));
+    console.log(this.filterRefValue)
 
     this.reloadData();
   }
@@ -54,8 +74,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   reloadData() {
     this.dataSourcesLocal?.splice(0);
+    this.filteredDataSources?.splice(0);
     this.dataSourcesLocal = this.bookingService.getBookings();
-    this.dataSources = new MatTableDataSource<BookTable>(this.dataSourcesLocal);
+
+    for(let i=0; i<this.dataSourcesLocal.length;i++){
+      console.log(this.dataSourcesLocal[i]);
+
+      if(this.dataSourcesLocal[i].PhoneNumber.includes(this.filterRefValue as string)) {
+        this.filteredDataSources.push(this.dataSourcesLocal[i]);
+      }
+
+    }
+
+    this.dataSources = new MatTableDataSource<BookTable>(this.filteredDataSources);
     // console.log(this.dataSources);
   }
 
@@ -100,12 +131,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
   }
 
- 
-
-  deleteBooking(keyValue: number) {
 
 
-
+  deleteBooking(keyValue: string) {
 
     this.bookingService.deleteBooking(keyValue);
 
@@ -122,8 +150,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.reloadData();
   }
 
-  viewBookingInfo(keyValue: number) {
+  viewBookingInfo(keyValue: string) {
     // this.openDialogboxEditor(keyValue as number, true);
+    console.log(keyValue);
     this.router.navigateByUrl(`/booking/${keyValue}`);
 
   }

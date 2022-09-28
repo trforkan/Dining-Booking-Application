@@ -4,6 +4,7 @@ import { BookTable } from '../../../Model/booking.models';
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, EmailValidator } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {v4 as uuidv4} from 'uuid';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class DialogboxComponent implements OnInit {
 
   dialogType = "UPDATE"
 
-  idValue?: number;
+  idValue?: string;
 
 
   bookingTimes = [
@@ -51,7 +52,7 @@ export class DialogboxComponent implements OnInit {
   @Input() viewInformation = false;
 
   bookingInfoForm: FormGroup = this.fb.group({
-    Id: [this.idValue],
+    Id: [this.idValue=uuidv4()],
     Name: [this.bookedInformation?.Name],
     Email: [this.bookedInformation?.Email],
     PhoneNumber: [this.bookedInformation?.PhoneNumber],
@@ -62,7 +63,7 @@ export class DialogboxComponent implements OnInit {
   });
 
   constructor(@Inject(MAT_DIALOG_DATA) public bookedData: any, private snackbar: MatSnackBar, private fb: FormBuilder, public bookingService: BookingService, public dialogRef: MatDialogRef<DialogboxComponent>) {
-    this.idValue = Math.floor(Math.random() * 100000);
+    // this.idValue = Math.floor(Math.random() * 100000);
   }
 
   bookingInformation?: BookTable;

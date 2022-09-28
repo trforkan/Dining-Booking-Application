@@ -23,7 +23,7 @@ export class BookingDetailsComponent implements OnInit {
     });
   }
 
-  loadInformation(id: number){
+  loadInformation(id: string){
     this.bookedDetails = this.bookingService.getBooking(id);
   }
 

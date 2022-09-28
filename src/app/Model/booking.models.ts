@@ -1,12 +1,12 @@
 import { Time } from "@angular/common";
 
 export interface BookTable {
-  Id: number,
+  Id: string,
   Name: string ,
   Email: string ,
-  PhoneNumber: number ,
+  PhoneNumber: string,
   BookingDate: Date ,
   BookingTime: string ,
   DiningSpace: string ,
-  Occasion: string 
+  Occasion: string
 };

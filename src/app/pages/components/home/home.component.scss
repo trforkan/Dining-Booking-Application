@@ -6,6 +6,33 @@
     // border: 1px solid yellowgreen;
     .button-container {
       width: 100%;
+      .search-box {
+        // border: 1px solid white;
+        width: 300px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        background-color: white;
+        border-radius: 3px;
+
+        .search-icon {
+          margin-left: 10px;
+          margin-right: 5px;
+        }
+
+        .search-field {
+          // display: flex;
+          width: 270px;
+          height: 35px;
+          border: none;
+          background-color: transparent;
+          border: 0px solid;
+        }
+        textarea:focus, input:focus{
+          outline: none;
+        }
+
+      }
       // border: 1px solid red;
       .add-bookings-button {
         margin: 15px;
